@@ -26,7 +26,9 @@
   "homepage": "https://github.com/nishanbajracharya/react-virtualized-listview#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "del-cli": "^1.1.0",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
