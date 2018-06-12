@@ -1,0 +1,25 @@
+{
+  "name": "react-virtualized-listview",
+  "version": "1.0.0",
+  "description": "A simple virtualized listview inspired by react-virtualized",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nishanbajracharya/react-virtualized-listview.git"
+  },
+  "keywords": [
+    "react",
+    "virtualized",
+    "list",
+    "virualized-list"
+  ],
+  "author": "Nishan Bajracharya <nisbaj11@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nishanbajracharya/react-virtualized-listview/issues"
+  },
+  "homepage": "https://github.com/nishanbajracharya/react-virtualized-listview#readme"
+}
