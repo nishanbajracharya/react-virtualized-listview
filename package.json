@@ -30,6 +30,8 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "del-cli": "^1.1.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.9.1",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
