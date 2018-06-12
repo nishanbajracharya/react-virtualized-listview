@@ -14,6 +14,10 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -158,4 +162,11 @@ List.defaultProps = {
   source: [],
   rowHeight: 24,
   overScanCount: 5
+};
+
+List.propTypes = {
+  renderItem: _propTypes2.default.func,
+  rowHeight: _propTypes2.default.number,
+  source: _propTypes2.default.array.isRequired,
+  overScanCount: _propTypes2.default.number.isRequired
 };
