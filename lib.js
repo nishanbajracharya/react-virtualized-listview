@@ -37,10 +37,8 @@ var style = {
     left: 0,
     right: 0,
     bottom: 0,
-    overflowY: 'scroll',
-    position: 'absolute',
-    boxSizing: 'border-box',
-    border: '1px solid #eee'
+    overflowY: 'auto',
+    position: 'absolute'
   },
   list: function list(height) {
     return {
