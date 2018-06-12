@@ -4,6 +4,8 @@
   "description": "A simple virtualized listview inspired by react-virtualized",
   "main": "src/index.js",
   "scripts": {
+    "prebuild": "del lib",
+    "build": "babel src -d lib",
     "test": "jest"
   },
   "repository": {
@@ -21,5 +23,13 @@
   "bugs": {
     "url": "https://github.com/nishanbajracharya/react-virtualized-listview/issues"
   },
-  "homepage": "https://github.com/nishanbajracharya/react-virtualized-listview#readme"
+  "homepage": "https://github.com/nishanbajracharya/react-virtualized-listview#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "del-cli": "^1.1.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  }
 }
