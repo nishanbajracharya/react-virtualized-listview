@@ -20,6 +20,12 @@ export default class List extends React.Component {
 
   getHeight = () => this.getCount() * this.props.rowHeight;
 
+  setScrollPosition = event => {
+    this.setState({
+      scrollTop: event.target.scrollTop
+    });
+  };
+
   render = () => <div />;
 }
 
