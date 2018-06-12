@@ -92,11 +92,11 @@ export default class List extends React.Component {
       <div style={style.listWrapper} ref={c => (this.listWrapper = c)}>
         <div style={style.list(this.getHeight())} ref={c => (this.list = c)}>
           {this.props.source.map(
-            (index, key) =>
-              this.checkIfVisible(key) &&
+            (value, index) =>
+              this.checkIfVisible(index) &&
               this.props.renderItem({
-                index: key,
-                style: style.item(key, this.props.rowHeight)
+                index: index,
+                style: style.item(index, this.props.rowHeight)
               })
           )}
         </div>
