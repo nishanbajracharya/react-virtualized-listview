@@ -1,6 +1,6 @@
 {
   "name": "react-virtualized-listview",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A simple virtualized listview inspired by react-virtualized",
   "main": "lib.js",
   "scripts": {
@@ -38,7 +38,7 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
   },
-  "files" : [
+  "files": [
     "lib.js"
   ]
 }
