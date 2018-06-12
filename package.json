@@ -2,10 +2,11 @@
   "name": "react-virtualized-listview",
   "version": "1.0.0",
   "description": "A simple virtualized listview inspired by react-virtualized",
-  "main": "src/index.js",
+  "main": "lib.js",
   "scripts": {
-    "prebuild": "del lib",
-    "build": "babel src -d lib",
+    "prebuild": "del lib.js",
+    "build-d": "babel src -d lib",
+    "build": "babel src -o lib.js",
     "test": "jest",
     "lint": "eslint src"
   },
@@ -37,5 +38,8 @@
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
-  }
+  },
+  "files" : [
+    "lib.js"
+  ]
 }
