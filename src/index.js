@@ -13,13 +13,11 @@ const style = {
     left: 0,
     right: 0,
     bottom: 0,
-    overflowY: 'scroll',
+    overflowY: 'auto',
     position: 'absolute',
-    boxSizing: 'border-box',
-    border: '1px solid #eee'
   },
   list: height => ({
-    height: height,
+    height,
     position: 'relative'
   }),
   item: (index, height) => ({
