@@ -30,7 +30,12 @@ const data = [1, 2, 3, 4, 5];
 ```
 
 ## API
-In Progress
+|      Prop     | Default | Required? |                                                                                                             Description                                                                                                            |
+|:-------------:|:-------:|:---------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| source        |   [ ]   |    Yes    | An array of the input source. The array is iterated over and index of each item is returned in the `renderItem` prop.                                                                                                              |
+| rowHeight     |    24   |     No    | The height of each row in the list.                                                                                                                                                                                                |
+| overScanCount |    5    |     No    | The number of rows to render above and below the visible list window. This is to have some rows already rendered while scrolling above or below the visible list window so that they don't pop in as soon as the list is scrolled. |
+| renderItem    |         |    Yes    | The function that is called when rendering each row.                                                                                                                                                                               |
 
 ## Features planned for next release
 - Lists with dynamic height
