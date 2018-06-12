@@ -1,0 +1,28 @@
+body {
+  font-family: sans-serif;
+}
+
+.App {
+  width: 400px;
+  height: 600px;
+  position: relative;
+  background: #fafafa;
+  display: inline-block;
+}
+
+.list-wrapper {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  position: absolute;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+}
+
+.list{
+  position: relative;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+}
