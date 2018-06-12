@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 const style = {
   container: {
@@ -111,4 +112,11 @@ List.defaultProps = {
   source: [],
   rowHeight: 24,
   overScanCount: 5,
+};
+
+List.propTypes = {
+  renderItem: PropTypes.func,
+  rowHeight: PropTypes.number,
+  source: PropTypes.array.isRequired,
+  overScanCount: PropTypes.number.isRequired,
 };
