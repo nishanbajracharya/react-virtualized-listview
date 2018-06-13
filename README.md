@@ -8,6 +8,8 @@ The first step is to add `react-virtualized-listview` into your project.
 $ npm install --save react-virtualized-listview
 ```
 
+**Note:** This library is not dependent on `react-virtualized` which is a separate and highly customizable virtualized list library.
+
 ## Usage
 Import the package into your project using the `import` statement
 ```js
@@ -50,6 +52,7 @@ The renderItem function signature is as follows
 ## Features planned for next release
 - Lists with dynamic height
 - Expose internal components using default CSS classnames, custom classname injection and refs
+- Add scroll persistence so that the the scroll position persists between route changes
 
 ## Contributing
 To contribute, follow one of the two options:
