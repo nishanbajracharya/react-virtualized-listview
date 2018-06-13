@@ -52,7 +52,7 @@ The renderItem function signature is as follows
 ## Features planned for next release
 - Lists with dynamic height
 - Expose internal components using default CSS classnames, custom classname injection and refs
-- Add scroll persistence so that the the scroll position persists between route changes
+- Add scroll persistence so that the scroll position persists between route changes
 
 ## Contributing
 To contribute, follow one of the two options:
