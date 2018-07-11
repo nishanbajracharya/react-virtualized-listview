@@ -47,7 +47,7 @@ The renderItem function signature is as follows
   style // The style that is applied to the row item
 }) => <RowItem key={index} index={index} style={style}/>
 ```
-**Note:** Passing the `style` prop and applying in the root element of the row item is required
+**Note:** Passing the `style` prop and applying in the root element of the row item is **required**
 
 ## Features planned for next release
 - Lists with dynamic height
