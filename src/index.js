@@ -67,9 +67,8 @@ export default class List extends React.Component {
 
   getWrapper = () => ReactDOM.findDOMNode(this.listWrapper);
 
-  getDefaultHeightWidth = () => {
-    return this.props.className ? {} : { height: '300px', width: '600px' };
-  };
+  getDefaultHeightWidth = () =>
+    this.props.className ? {} : { height: '100%', width: '100%' };
 
   setScrollPosition = event => {
     this.setState({
@@ -94,7 +93,7 @@ export default class List extends React.Component {
   renderList = () => (
     <div
       style={style.container(this.getDefaultHeightWidth())}
-      className={this.props.className ? this.props.className : ''}
+      className={this.props.className}
       ref={c => (this.container = c)}
     >
       <div style={style.listWrapper} ref={c => (this.listWrapper = c)}>

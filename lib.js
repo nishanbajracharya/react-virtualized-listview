@@ -27,10 +27,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var style = {
-  container: {
-    width: '100%',
-    height: '100%',
-    position: 'relative'
+  container: function container(_ref) {
+    var height = _ref.height,
+        width = _ref.width;
+    return {
+      position: 'relative',
+      height: height,
+      width: width
+    };
   },
   listWrapper: {
     top: 0,
@@ -85,6 +89,10 @@ var List = function (_React$Component) {
       return _reactDom2.default.findDOMNode(_this.listWrapper);
     };
 
+    _this.getDefaultHeightWidth = function () {
+      _this.props.className ? {} : { height: '100%', width: '100%' };
+    };
+
     _this.setScrollPosition = function (event) {
       _this.setState({
         scrollTop: event.target.scrollTop
@@ -100,9 +108,13 @@ var List = function (_React$Component) {
     _this.renderList = function () {
       return _react2.default.createElement(
         'div',
-        { style: style.container, ref: function ref(c) {
+        {
+          style: style.container(_this.getDefaultHeightWidth()),
+          className: _this.props.className,
+          ref: function ref(c) {
             return _this.container = c;
-          } },
+          }
+        },
         _react2.default.createElement(
           'div',
           { style: style.listWrapper, ref: function ref(c) {
@@ -166,5 +178,6 @@ List.propTypes = {
   renderItem: _propTypes2.default.func,
   rowHeight: _propTypes2.default.number,
   source: _propTypes2.default.array.isRequired,
-  overScanCount: _propTypes2.default.number.isRequired
+  overScanCount: _propTypes2.default.number.isRequired,
+  className: _propTypes2.default.string.length
 };
