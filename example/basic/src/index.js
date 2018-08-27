@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import List from './List';
 
 import List from 'react-virtualized-listview';
 
