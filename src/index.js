@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 const style = {
   container: ({ height, width }) => ({
-    position: 'relative',
     height,
+    position: 'relative',
     width
   }),
   listWrapper: {
@@ -99,7 +99,7 @@ export default class List extends React.Component {
       <div style={style.listWrapper} ref={c => (this.listWrapper = c)}>
         <div style={style.list(this.getHeight())} ref={c => (this.list = c)}>
           {this.props.source.map(
-            (value, index) =>
+            (_, index) =>
               this.checkIfVisible(index) &&
               this.props.renderItem({
                 index: index,
@@ -121,9 +121,9 @@ List.defaultProps = {
 };
 
 List.propTypes = {
+  className: PropTypes.string,
   renderItem: PropTypes.func,
   rowHeight: PropTypes.number,
   source: PropTypes.array.isRequired,
-  overScanCount: PropTypes.number.isRequired,
-  className: PropTypes.string
+  overScanCount: PropTypes.number.isRequired
 };
