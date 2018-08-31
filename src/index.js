@@ -121,9 +121,9 @@ List.defaultProps = {
 };
 
 List.propTypes = {
-  className: PropTypes.string,
   renderItem: PropTypes.func,
   rowHeight: PropTypes.number,
+  className: PropTypes.string,
   source: PropTypes.array.isRequired,
   overScanCount: PropTypes.number.isRequired
 };
