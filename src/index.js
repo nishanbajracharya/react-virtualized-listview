@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 const style = {
   container: ({ height, width }) => ({
+    width,
     height,
-    position: 'relative',
-    width
+    position: 'relative'
   }),
   listWrapper: {
     top: 0,
