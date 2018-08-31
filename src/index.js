@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 const style = {
-  container: {
-    width: '100%',
-    height: '100%',
+  container: ({ height, width }) => ({
+    width,
+    height,
     position: 'relative'
-  },
+  }),
   listWrapper: {
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
     overflowY: 'auto',
-    position: 'absolute',
+    position: 'absolute'
   },
   list: height => ({
     height,
@@ -30,7 +30,6 @@ const style = {
 };
 
 export default class List extends React.Component {
-
   constructor() {
     super();
 
@@ -68,6 +67,9 @@ export default class List extends React.Component {
 
   getWrapper = () => ReactDOM.findDOMNode(this.listWrapper);
 
+  getDefaultHeightWidth = () =>
+    this.props.className ? {} : { height: '100%', width: '100%' };
+
   setScrollPosition = event => {
     this.setState({
       scrollTop: event.target.scrollTop
@@ -78,7 +80,9 @@ export default class List extends React.Component {
     const elemPosition = index * this.props.rowHeight;
 
     return (
-      elemPosition > this.getScrollPosition() - this.props.overScanCount * this.props.rowHeight &&
+      elemPosition >
+        this.getScrollPosition() -
+          this.props.overScanCount * this.props.rowHeight &&
       elemPosition + this.props.rowHeight <
         this.getScrollPosition() +
           this.state.visibleHeight +
@@ -87,11 +91,15 @@ export default class List extends React.Component {
   };
 
   renderList = () => (
-    <div style={style.container} ref={c => (this.container = c)}>
+    <div
+      style={style.container(this.getDefaultHeightWidth())}
+      className={this.props.className}
+      ref={c => (this.container = c)}
+    >
       <div style={style.listWrapper} ref={c => (this.listWrapper = c)}>
         <div style={style.list(this.getHeight())} ref={c => (this.list = c)}>
           {this.props.source.map(
-            (value, index) =>
+            (_, index) =>
               this.checkIfVisible(index) &&
               this.props.renderItem({
                 index: index,
@@ -109,12 +117,13 @@ export default class List extends React.Component {
 List.defaultProps = {
   source: [],
   rowHeight: 24,
-  overScanCount: 5,
+  overScanCount: 5
 };
 
 List.propTypes = {
   renderItem: PropTypes.func,
   rowHeight: PropTypes.number,
+  className: PropTypes.string,
   source: PropTypes.array.isRequired,
-  overScanCount: PropTypes.number.isRequired,
+  overScanCount: PropTypes.number.isRequired
 };

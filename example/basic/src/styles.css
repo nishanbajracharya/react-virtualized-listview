@@ -4,10 +4,12 @@ body {
 
 .App {
   width: 400px;
-  height: 600px;
+  height: 400px;
   position: relative;
   background: #fafafa;
   display: inline-block;
+  border: 1px solid #eee;
+  box-sizing: border-box;
 }
 
 .list-wrapper {
@@ -17,11 +19,10 @@ body {
   bottom: 0;
   overflow-y: scroll;
   position: absolute;
-  border: 1px solid #eee;
-  box-sizing: border-box;
 }
 
-.list{
+.list {
+  padding: 10px;
   position: relative;
   box-sizing: border-box;
   border-bottom: 1px solid #eee;
