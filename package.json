@@ -7,7 +7,8 @@
     "prebuild": "del lib.js",
     "build-d": "babel src -d lib",
     "build": "babel src -o lib.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test": "echo 'No tests found'"
   },
   "repository": {
     "type": "git",
