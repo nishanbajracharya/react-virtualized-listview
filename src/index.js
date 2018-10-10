@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 const style = {
-  container: ({ height, width }) => ({
-    width,
-    height,
-    position: 'relative'
-  }),
+  container: (props) => {
+    if (!props || (!props.width || !props.height)) {
+      return {};
+    }
+
+    return {
+      width: props.width,
+      position: 'relative',
+      height: props.height,
+    };
+  },
   listWrapper: {
     top: 0,
     left: 0,

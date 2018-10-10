@@ -55,7 +55,6 @@ class App extends React.Component {
             </div>
           </div>
         )}
-        <div>Hello</div>
       </div>
     );
   }
