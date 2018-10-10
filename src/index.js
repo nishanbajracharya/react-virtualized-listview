@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 const style = {
-  container: (props) => {
+  container: (props = {}) => {
     if (!props || (!props.width || !props.height)) {
       return {};
     }

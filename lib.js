@@ -27,13 +27,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var style = {
-  container: function container(_ref) {
-    var height = _ref.height,
-        width = _ref.width;
+  container: function container() {
+    var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    if (!props || !props.width || !props.height) {
+      return {};
+    }
+
     return {
+      width: props.width,
       position: 'relative',
-      height: height,
-      width: width
+      height: props.height
     };
   },
   listWrapper: {
@@ -90,7 +94,7 @@ var List = function (_React$Component) {
     };
 
     _this.getDefaultHeightWidth = function () {
-      _this.props.className ? {} : { height: '100%', width: '100%' };
+      return _this.props.className ? {} : { height: '100%', width: '100%' };
     };
 
     _this.setScrollPosition = function (event) {
@@ -125,7 +129,7 @@ var List = function (_React$Component) {
             { style: style.list(_this.getHeight()), ref: function ref(c) {
                 return _this.list = c;
               } },
-            _this.props.source.map(function (value, index) {
+            _this.props.source.map(function (_, index) {
               return _this.checkIfVisible(index) && _this.props.renderItem({
                 index: index,
                 style: style.item(index, _this.props.rowHeight)
@@ -177,7 +181,7 @@ List.defaultProps = {
 List.propTypes = {
   renderItem: _propTypes2.default.func,
   rowHeight: _propTypes2.default.number,
+  className: _propTypes2.default.string,
   source: _propTypes2.default.array.isRequired,
-  overScanCount: _propTypes2.default.number.isRequired,
-  className: _propTypes2.default.string.length
+  overScanCount: _propTypes2.default.number.isRequired
 };

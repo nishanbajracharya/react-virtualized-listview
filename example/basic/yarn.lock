@@ -6456,9 +6456,9 @@ react-scripts@1.1.4:
     fsevents "^1.1.3"
 
 react-virtualized-listview@^0.1.0:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/react-virtualized-listview/-/react-virtualized-listview-0.1.5.tgz#bffb8f6fb788e6f9e62849821202e5311b2341ff"
-  integrity sha512-DzQdEL/UxAXzS/udhI7GdRrG6QIyMiIomW3d/KtarLiDkoiyn9HgRTVRmpHaM50tBvwt8sGyJ07zUEGfS0RCZw==
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/react-virtualized-listview/-/react-virtualized-listview-0.1.6.tgz#ab52efb282b4f40a7f3e5196311b8399759f1a30"
+  integrity sha512-y34efrIFkd1QX8+90F8NzfcBS0k9MLAFoZfkyw8TzBkXSoKaNqdvQEERm1OLJZU7nfZc/LfvN7Z+rDvMI/bkhg==
 
 react@^16.4.0:
   version "16.4.0"
