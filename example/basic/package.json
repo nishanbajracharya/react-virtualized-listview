@@ -6,7 +6,7 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-scripts": "1.1.4",
-    "react-virtualized-listview": "^0.1.0"
+    "react-virtualized-listview": "^0.1.7"
   },
   "scripts": {
     "start": "react-scripts start",
