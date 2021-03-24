@@ -26,11 +26,11 @@ const style = {
     height,
     position: 'relative'
   }),
-  item: (index, height) => ({
-    height,
+  item: (props) => ({
+    height: props.height,
     left: 0,
     right: 0,
-    top: height * index,
+    top: props.top,
     position: 'absolute'
   })
 };
@@ -41,8 +41,36 @@ export default class List extends React.Component {
 
     this.state = {
       scrollTop: 0,
-      visibleHeight: 0
+      visibleHeight: 0,
+      mapHeight: {},
+      maxRowHeight: 0,
+      totalHeight: 0
     };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    const mapHeight = {};
+    let totalHeight = 0;
+    let maxRowHeight = 0;
+    let top = 0;
+    if (props.source.length !== Object.keys(state.mapHeight).length) {
+      props.source.forEach((item, index) => {
+        mapHeight[index] = {
+          height: item.height,
+          top: top
+        };
+        top += item.height;
+        totalHeight += item.height;
+        maxRowHeight = maxRowHeight > item.height ? maxRowHeight : item.height;
+      });
+      return Object.assign(state, {
+        mapHeight,
+        totalHeight,
+        maxRowHeight
+      });
+    }
+    
+    return state;
   }
 
   componentDidMount() {
@@ -69,7 +97,7 @@ export default class List extends React.Component {
 
   getVisibleHeight = () => this.state.visibleHeight;
 
-  getHeight = () => this.getCount() * this.props.rowHeight;
+  getHeight = () => this.state.totalHeight;
 
   getWrapper = () => ReactDOM.findDOMNode(this.listWrapper);
 
@@ -83,16 +111,16 @@ export default class List extends React.Component {
   };
 
   checkIfVisible = index => {
-    const elemPosition = index * this.props.rowHeight;
+    const elemPosition = this.state.mapHeight[index].top;
 
     return (
       elemPosition >
-        this.getScrollPosition() -
-          this.props.overScanCount * this.props.rowHeight &&
-      elemPosition + this.props.rowHeight <
-        this.getScrollPosition() +
-          this.state.visibleHeight +
-          this.props.overScanCount * this.props.rowHeight
+      this.getScrollPosition() -
+      this.props.overScanCount * this.state.maxRowHeight &&
+      elemPosition <
+      this.getScrollPosition() +
+      this.state.visibleHeight +
+      this.props.overScanCount * this.state.maxRowHeight
     );
   };
 
@@ -109,7 +137,7 @@ export default class List extends React.Component {
               this.checkIfVisible(index) &&
               this.props.renderItem({
                 index: index,
-                style: style.item(index, this.props.rowHeight)
+                style: style.item(this.state.mapHeight[index])
               })
           )}
         </div>
@@ -117,19 +145,19 @@ export default class List extends React.Component {
     </div>
   );
 
-  render = () => this.renderList();
+  render = () => Object.keys(this.state.mapHeight).length ? this.renderList() : null;
 }
 
 List.defaultProps = {
   source: [],
-  rowHeight: 24,
   overScanCount: 5
 };
 
 List.propTypes = {
-  renderItem: PropTypes.func,
-  rowHeight: PropTypes.number,
+  renderItem: PropTypes.func.isRequired,
   className: PropTypes.string,
-  source: PropTypes.array.isRequired,
-  overScanCount: PropTypes.number.isRequired
+  source: PropTypes.arrayOf(PropTypes.shape({
+    height: PropTypes.string.isRequired
+  })),
+  overScanCount: PropTypes.number
 };

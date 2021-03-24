@@ -54,12 +54,12 @@ var style = {
       position: 'relative'
     };
   },
-  item: function item(index, height) {
+  item: function item(props) {
     return {
-      height: height,
+      height: props.height,
       left: 0,
       right: 0,
-      top: height * index,
+      top: props.top,
       position: 'absolute'
     };
   }
@@ -86,7 +86,7 @@ var List = function (_React$Component) {
     };
 
     _this.getHeight = function () {
-      return _this.getCount() * _this.props.rowHeight;
+      return _this.state.totalHeight;
     };
 
     _this.getWrapper = function () {
@@ -104,9 +104,9 @@ var List = function (_React$Component) {
     };
 
     _this.checkIfVisible = function (index) {
-      var elemPosition = index * _this.props.rowHeight;
+      var elemPosition = _this.state.mapHeight[index].top;
 
-      return elemPosition > _this.getScrollPosition() - _this.props.overScanCount * _this.props.rowHeight && elemPosition + _this.props.rowHeight < _this.getScrollPosition() + _this.state.visibleHeight + _this.props.overScanCount * _this.props.rowHeight;
+      return elemPosition > _this.getScrollPosition() - _this.props.overScanCount * _this.state.maxRowHeight && elemPosition < _this.getScrollPosition() + _this.state.visibleHeight + _this.props.overScanCount * _this.state.maxRowHeight;
     };
 
     _this.renderList = function () {
@@ -132,7 +132,7 @@ var List = function (_React$Component) {
             _this.props.source.map(function (_, index) {
               return _this.checkIfVisible(index) && _this.props.renderItem({
                 index: index,
-                style: style.item(index, _this.props.rowHeight)
+                style: style.item(_this.state.mapHeight[index])
               });
             })
           )
@@ -141,12 +141,15 @@ var List = function (_React$Component) {
     };
 
     _this.render = function () {
-      return _this.renderList();
+      return Object.keys(_this.state.mapHeight).length ? _this.renderList() : null;
     };
 
     _this.state = {
       scrollTop: 0,
-      visibleHeight: 0
+      visibleHeight: 0,
+      mapHeight: {},
+      maxRowHeight: 0,
+      totalHeight: 0
     };
     return _this;
   }
@@ -164,6 +167,32 @@ var List = function (_React$Component) {
 
       this.setState({ visibleHeight: visibleHeight });
     }
+  }], [{
+    key: 'getDerivedStateFromProps',
+    value: function getDerivedStateFromProps(props, state) {
+      var mapHeight = {};
+      var totalHeight = 0;
+      var maxRowHeight = 0;
+      var top = 0;
+      if (props.source.length !== Object.keys(state.mapHeight).length) {
+        props.source.forEach(function (item, index) {
+          mapHeight[index] = {
+            height: item.height,
+            top: top
+          };
+          top += item.height;
+          totalHeight += item.height;
+          maxRowHeight = maxRowHeight > item.height ? maxRowHeight : item.height;
+        });
+        return Object.assign(state, {
+          mapHeight: mapHeight,
+          totalHeight: totalHeight,
+          maxRowHeight: maxRowHeight
+        });
+      }
+
+      return state;
+    }
   }]);
 
   return List;
@@ -174,14 +203,14 @@ exports.default = List;
 
 List.defaultProps = {
   source: [],
-  rowHeight: 24,
   overScanCount: 5
 };
 
 List.propTypes = {
-  renderItem: _propTypes2.default.func,
-  rowHeight: _propTypes2.default.number,
+  renderItem: _propTypes2.default.func.isRequired,
   className: _propTypes2.default.string,
-  source: _propTypes2.default.array.isRequired,
+  source: _propTypes2.default.arrayOf(_propTypes2.default.shape({
+    height: _propTypes2.default.string.isRequired
+  })),
   overScanCount: _propTypes2.default.number.isRequired
 };
