@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.4.0",
-    "react-dom": "^16.4.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-scripts": "1.1.4",
-    "react-virtualized-listview": "^0.1.7"
+    "react-virtualized-listview": "^0.1.8"
   },
   "scripts": {
     "start": "react-scripts start",

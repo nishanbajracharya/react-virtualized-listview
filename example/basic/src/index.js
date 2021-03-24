@@ -5,7 +5,7 @@ import List from 'react-virtualized-listview';
 
 import './styles.css';
 
-const data = [...Array(10000).keys()];
+const data = [...Array(10000).keys()].map(() => ({height: 40}));
 
 class App extends React.Component {
   constructor() {
@@ -37,7 +37,6 @@ class App extends React.Component {
           <List
             className="App"
             source={data}
-            rowHeight={40}
             renderItem={({ index, style }) => (
               <div className="list" key={index} style={{ ...style }}>
                 Hello {index}

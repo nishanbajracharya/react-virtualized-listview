@@ -18,11 +18,25 @@ import List from 'react-virtualized-listview';
 
 ### Example
 ```jsx
-const data = [1, 2, 3, 4, 5];
+const data = [{
+  number: 1,
+  height: 40
+}, {
+  number: 2,
+  height: 40
+},{
+  number: 3,
+  height: 40
+}, {
+  number: 4,
+  height: 40
+}, {
+  number: 5,
+  height: 40
+}];
 
 <List
   source={data}
-  rowHeight={40}
   renderItem={({ index, style }) => (
     <div key={index} style={style}>
       Hello {index}
@@ -34,7 +48,7 @@ const data = [1, 2, 3, 4, 5];
 ## API
 |      Prop     | Default | Required? |                                                                                                             Description                                                                                                            |
 |:-------------:|:-------:|:---------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| source        |   [ ]   |    Yes    | An array of the input source. The array is iterated over and index of each item is returned in the `renderItem` prop.                                                                                                              |
+| source        |   [ ]   |    Yes    | An array of the input source. The array is iterated over and index of each item is returned in the `renderItem` prop. *source.item* shold be have *height* property.                                                                                                         |
 | rowHeight     |    24   |     No    | The height of each row in the list.                                                                                                                                                                                                |
 | overScanCount |    5    |     No    | The number of rows to render above and below the visible list window. This is to have some rows already rendered while scrolling above or below the visible list window so that they don't pop in as soon as the list is scrolled. |
 | renderItem    |         |    Yes    | The function that is called when rendering each row.|
@@ -50,7 +64,6 @@ The renderItem function signature is as follows
 **Note:** Passing the `style` prop and applying in the root element of the row item is **required**
 
 ## Features planned for next release
-- Lists with dynamic height
 - Expose internal components using default CSS classnames, custom classname injection and refs
 - Add scroll persistence so that the scroll position persists between route changes
 
